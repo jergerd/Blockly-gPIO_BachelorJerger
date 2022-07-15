@@ -1,3 +1,16 @@
+## Hinweis zu diesem Repository
+
+Bei diesem Repository handelt es sich um eine für eine Bachelorarbeit angepasste Version der Blockly-gPIo Software des Grazer Computer Clubs (https://gc2.at/#page-top). 
+Der "Initial Commit" beinhaltet das frei verfügbare Repository dieser Software unter https://github.com/GrazerComputerClub/Blockly-gPIo aufrufbar, zum Zeitpunkt des 15.07.2022.
+
+Für die allgemeine Verwendung und Installation siehe im Unterpunkt "Blockly-gPIo".
+
+## Ziele der Änderungen
+
+
+
+Ab hier folgt die Original-Datei des README:
+
 # Blockly-gPIo
 Visual programming for the Raspberry Pi with access to the GPIO and a simple browser-based simulation mode.
 
@@ -51,3 +64,4 @@ Now use simulation mode or go to settings and enter IP address of your Raspberry
 * wss support (https)
 * Port scanner to find available servers
 * Dark theme
+
