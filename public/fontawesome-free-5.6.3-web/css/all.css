@@ -2829,6 +2829,10 @@ readers do not read off random characters that represent icons */
 .fa-play-circle:before {
   content: "\f144"; }
 
+/* Bachelor*/
+.fa-toggle-bachelor:before {
+  content: "\f121"; }
+
 .fa-playstation:before {
   content: "\f3df"; }
 

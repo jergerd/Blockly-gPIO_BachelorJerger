@@ -328,6 +328,11 @@
     color: #ff0000;
 }
 
+/* Bachleor */
+.toggleBtn {
+    color: #0e6b0e;
+}
+
 .cfgBtn {
     color: chocolate;
 }
@@ -379,13 +384,13 @@
 }
 
 .leftContent {
-    width: 64%;
+    width: 74%;
     float: left;
     height: 85%;
 }
 
 .rightContent {
-    width: 35%;
+    width: 25%;
     height: 85%;
     float: left;
     display: block;
@@ -397,14 +402,14 @@
 
 .rightContentTop {
     overflow: auto;
-    height: 70%;
+    height: 0%;
 }
 
 .rightContentBottom {
     overflow: auto;
     background-color: #6D6C6C;
     color: #F1F1F1;
-    height: 30%;
+    height: 100%;
 }
 
 #executionContentDiv {

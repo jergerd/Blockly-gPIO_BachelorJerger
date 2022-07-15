@@ -220,3 +220,21 @@ Bgpio.getRaspPiIp = function () {
     }
     return null;
 };
+
+//Bachelor Button 
+
+Bgpio.changeScreen = function () {
+	var root = document.querySelector('.rightContentBottom');
+	var toggle = root.style.getPropertyValue('height');
+	//toggle mit 2 Optionen
+	if (toggle == '30%'){
+		root.style.setProperty('height', '100%');
+		var root = document.querySelector('.rightContentTop');
+		root.style.setProperty('height', '0%');
+	} else {
+		root.style.setProperty('height', '30%');
+		var root = document.querySelector('.rightContentTop');
+		root.style.setProperty('height', '70%');
+	}
+    return null;
+};
