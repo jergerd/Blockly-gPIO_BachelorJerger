@@ -13,6 +13,7 @@
     <script src="blockly/blocks_compressed.js"></script>
     <script src="blockly/javascript_compressed.js"></script>
     <script src="blockly/python_compressed.js"></script>
+    <script src="blocks/bachelor.js"></script>
     <script src="blocks/gpio.js"></script>
     <script src="blocks/dht11.js"></script>
     <script src="blocks/dht22.js"></script>
@@ -291,6 +292,19 @@
 
     <!-- Toolbox -->
     <xml id="toolbox" style="display: none">
+        <category name="CO2 Messung" colour="0">
+			<block type="use_scd30"></block>
+			<block type="use_sgp30"></block>
+			<block type="use_mq135"></block>
+			<block type="iteration"></block>
+			<block type="measure_in_varseconds"></block>
+			<block type="show_graph"></block>
+			<block type="math_number">
+                <field name="NUM">0</field>
+            </block>
+        </category>
+		<sep></sep>
+        
         <category name="Logik" colour="210">
             <block type="controls_if"></block>
             <block type="logic_compare">
@@ -672,7 +686,7 @@
 
     <!-- Blocks to display on the workspace -->
     <xml id="startBlocks" style="display: none">
-        <block type="text_print" x="20" y="9">
+        <!--<block type="text_print" x="20" y="9">
             <value name="TEXT">
                 <block type="text">
                     <field name="TEXT">GC²'s Blockly Implementierung für Raspberry Pi</field>
@@ -694,7 +708,7 @@
                             </value>
                         </block>
                 </block>
-        </block>
+        </block>-->
     </xml>
 
     <script src="js/js_interpreter.js"></script>
