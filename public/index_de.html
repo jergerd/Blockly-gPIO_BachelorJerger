@@ -292,17 +292,22 @@
 
     <!-- Toolbox -->
     <xml id="toolbox" style="display: none">
-        <category name="CO2 Messung" colour="0">
-			<block type="use_scd30"></block>
-			<block type="use_sgp30"></block>
-			<block type="use_mq135"></block>
+        <category name="Befehle" colour="0">
+			<block type="start_Block"></block>
 			<block type="iteration"></block>
 			<block type="measure_in_varseconds"></block>
 			<block type="show_graph"></block>
 			<block type="math_number">
-                <field name="NUM">0</field>
+                <field name="NUM">2</field>
             </block>
         </category>
+		<category name="Sensoren" colour="105">
+			<block type="use_sgp30"></block>
+			<block type="use_scd30"></block>
+			<block type="use_mq135"></block>
+        </category>
+		<sep></sep>
+		<sep></sep>
 		<sep></sep>
         
         <category name="Logik" colour="210">
@@ -686,7 +691,8 @@
 
     <!-- Blocks to display on the workspace -->
     <xml id="startBlocks" style="display: none">
-        <!--<block type="text_print" x="20" y="9">
+        <block type="start_Block" x="150" y="70"></block>
+		<!--<block type="text_print" x="20" y="9">
             <value name="TEXT">
                 <block type="text">
                     <field name="TEXT">GC²'s Blockly Implementierung für Raspberry Pi</field>
