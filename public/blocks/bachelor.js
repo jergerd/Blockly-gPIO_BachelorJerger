@@ -44,8 +44,10 @@ Blockly.Python['start_Block'] = function(block) {
   'nummerierungSensoren = 0\n'+
   'graphExistiert = False\n';
   Blockly.Python.definitions_['initialisierungen_inDateiSchreiben'] =
-  'f = open("/home/pi/Desktop/Messungen.txt", "a")\n'+
-  'f.write("\\n\\nMessung am {}:".format(datetime.now().strftime("%d/%m/%y %H:%M:%S")))\n'+
+  'aktuelleZeit = datetime.now()\n'+
+  'pfadSchreibdatei = "/home/pi/Desktop/Messungen/Messungen_{}.txt".format(aktuelleZeit.strftime("%d_%m_%y"))\n'+
+  'f = open(pfadSchreibdatei, "a")\n'+
+  'f.write("\\n\\nMessung am {}:".format(aktuelleZeit.strftime("%d/%m/%y %H:%M:%S")))\n'+
   'f.close()';
   Blockly.Python.definitions_['funktion_verwendeGraphen'] =
   'def verwendeGraphen(verwendeterSensor):\n'+
@@ -69,7 +71,8 @@ Blockly.Python['start_Block'] = function(block) {
   '    print("Anzeigen des Graphens nicht möglich, \\n da Block nicht innerhalb eines Sensormoduls.")\n\n';
   Blockly.Python.definitions_['funktion_schreibeDaten'] =
   'def schreibeDaten(erhalteneDaten, messEinheit, sensorName, timeStamp):\n'+
-  '  f = open("/home/pi/Desktop/Messungen.txt", "a")\n'+
+  '  global pfadSchreibdatei\n'+
+  '  f = open(pfadSchreibdatei, "a")\n'+
   '  f.write("\\n{}: {} {} mit Sensor: {}".format(timeStamp, erhalteneDaten, messEinheit, sensorName))\n'+
   '  f.close()\n\n';
   var statements_blocks = Blockly.Python.statementToCode(block, 'blocks');
@@ -89,10 +92,16 @@ Blockly.Python['start_Block'] = function(block) {
 
 Blockly.Blocks['use_scd30'] = {
   init: function() {
+    /*this.appendDummyInput()
+        .appendField("Benutze Sensor scd30");*/
+	this.appendDummyInput()
+        .appendField("Benutze großen");
     this.appendDummyInput()
-        .appendField("Benutze Sensor scd30");
+        .appendField("Kohlenstoffdioxid Sensor");
     this.appendStatementInput("blocks")
         .setCheck(null);
+	this.appendDummyInput()
+        .appendField("Ende der Benutzung");
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(105);
@@ -139,10 +148,16 @@ Blockly.Python['use_scd30'] = function(block) {
 
 Blockly.Blocks['use_sgp30'] = {
   init: function() {
+    /*this.appendDummyInput()
+        .appendField("Benutze Sensor sgp30");*/
+	this.appendDummyInput()
+        .appendField("Benutze kleinen");
     this.appendDummyInput()
-        .appendField("Benutze Sensor sgp30");
+        .appendField("Kohlenstoffdioxid Sensor");
     this.appendStatementInput("blocks")
         .setCheck(null);
+	this.appendDummyInput()
+        .appendField("Ende der Benutzung");
 	this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(105);
@@ -192,6 +207,8 @@ Blockly.Blocks['use_mq135'] = {
         .appendField(new Blockly.FieldNumber(14, 2, 26), "GPIO_Numb");
     this.appendStatementInput("blocks")
         .setCheck(null);
+	this.appendDummyInput()
+        .appendField("Ende der Benutzung");
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
