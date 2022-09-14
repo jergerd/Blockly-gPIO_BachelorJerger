@@ -250,6 +250,58 @@ Blockly.Python['use_mq135'] = function(block) {
 
 /*****/
 
+Blockly.Blocks['use_lightSensor'] = {
+  init: function() {
+	this.appendDummyInput()
+        .appendField("Benutze Lichtsensor");
+    this.appendDummyInput()
+        .appendField("mit Analog Input")
+        .appendField(new Blockly.FieldDropdown([["0","A0"], ["2","A2"], ["4","A4"], ["6","A6"]]), "AnalogPinNumber");
+    this.appendStatementInput("blocks")
+        .setCheck(null);
+	this.appendDummyInput()
+        .appendField("Ende der Benutzung");
+	this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(105);
+  }
+};
+
+Blockly.Python['use_lightSensor'] = function(block) {
+  var dropdown_name = block.getFieldValue('AnalogPinNumber');
+  
+  Blockly.Python.definitions_['libraries_use_lightSensor'] = 'from grove.adc import ADC\n';
+  
+  Blockly.Python.definitions_['setup_use_lightSensor'] = 'lightSensor = ADC()\n' +
+  'channel = '+ dropdown_name + '\n';
+  
+  Blockly.Python.definitions_['initialisierung_use_lightSensor'] = 'messanzahl = 0\n'+
+  'lightSensorInfoSet = [\'lightSensor\', [], [], messanzahl, nummerierungSensoren]\n'+
+  'xAxis_beschriftung.append("Uhrzeit")\n'+
+  'yAxis_beschriftung.append("Licht-Messung in % des Sensormaximums")\n'+
+  'nummerierungSensoren = nummerierungSensoren+1\n';
+  
+  Blockly.Python.definitions_['funktion_messung_lightSensor'] = 'def messung_lightSensor():\n' +
+  '  messWertV = lightSensor.read_voltage(channel)\n'+
+  '  messWertProz = messWertV/23\n'+
+  '  messWertProz = round(messWertProz,1)\n'+
+  '  print("Lichtsensor: {} % des Sensormaximums".format(messWertProz))\n'+
+  '  lightSensorInfoSet[3] = lightSensorInfoSet[3]+1\n'+
+  '  lightSensorInfoSet[1].append(datetime.now().strftime("%H:%M:%S"))\n'+
+  '  lightSensorInfoSet[2].append(messWertProz)\n'+
+  '  schreibeDaten(messWertProz, \'%\', lightSensorInfoSet[0], lightSensorInfoSet[1][-1])\n'+
+  '  return messWertProz \n \n';
+  
+  var statements_blocks = Blockly.Python.statementToCode(block, 'blocks');
+  // TODO: Assemble Python into code variable.
+  var code = 'verwendeterSensor = lightSensorInfoSet\n'+
+    'for i in range(1):\n' + '  pass\n' + statements_blocks +
+	'verwendeterSensor = 0\n';
+  return code;
+};
+
+/*****/
+
 
 Blockly.Blocks['measure_in_varseconds'] = {
   init: function() {
