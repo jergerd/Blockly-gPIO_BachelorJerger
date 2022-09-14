@@ -256,7 +256,7 @@ Blockly.Blocks['use_lightSensor'] = {
         .appendField("Benutze Lichtsensor");
     this.appendDummyInput()
         .appendField("mit Analog Input")
-        .appendField(new Blockly.FieldDropdown([["0","A0"], ["2","A2"], ["4","A4"], ["6","A6"]]), "AnalogPinNumber");
+        .appendField(new Blockly.FieldDropdown([["A0","0"], ["A2","2"], ["A4","4"], ["A6","6"]]), "AnalogPinNumber");
     this.appendStatementInput("blocks")
         .setCheck(null);
 	this.appendDummyInput()
