@@ -101,7 +101,7 @@ async def run_python_file(location, langCode, websocket):
                 # ok, no line at the moment
                 pass
             running_time = datetime.now() - start_time
-            if running_time.total_seconds() > 300: # 5 min
+            if running_time.total_seconds() < 0: # Endless
                 print('Sub process running too long: ' + str(running_time))
                 await websocket.send(json.dumps({ 'stdout_line' : 'ERR: Process is running too long' }) + '\n')
                 current_process.kill()
