@@ -273,7 +273,8 @@ Blockly.Python['use_lightSensor'] = function(block) {
   Blockly.Python.definitions_['libraries_use_lightSensor'] = 'from grove.adc import ADC\n';
   
   Blockly.Python.definitions_['setup_use_lightSensor'] = 'lightSensor = ADC()\n' +
-  'channel = '+ dropdown_name + '\n';
+  'channel = '+ dropdown_name + '\n'+
+  'maxValueLightSensor = 2300\n';
   
   Blockly.Python.definitions_['initialisierung_use_lightSensor'] = 'messanzahl = 0\n'+
   'lightSensorInfoSet = [\'lightSensor\', [], [], messanzahl, nummerierungSensoren]\n'+
@@ -282,8 +283,11 @@ Blockly.Python['use_lightSensor'] = function(block) {
   'nummerierungSensoren = nummerierungSensoren+1\n';
   
   Blockly.Python.definitions_['funktion_messung_lightSensor'] = 'def messung_lightSensor():\n' +
+  '  global maxValueLightSensor\n'+
   '  messWertV = lightSensor.read_voltage(channel)\n'+
-  '  messWertProz = messWertV/23\n'+
+  '  if(messWertV > maxValueLightSensor):\n'+
+  '    maxValueLightSensor = messWertV\n'+
+  '  messWertProz = messWertV/maxValueLightSensor*100\n'+
   '  messWertProz = round(messWertProz,1)\n'+
   '  print("Lichtsensor: {} % des Sensormaximums".format(messWertProz))\n'+
   '  lightSensorInfoSet[3] = lightSensorInfoSet[3]+1\n'+
