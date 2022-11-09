@@ -5,7 +5,27 @@ Der "Initial Commit" beinhaltet das frei verfügbare Repository dieser Software 
 
 Für die allgemeine Verwendung und Installation siehe im Unterpunkt "Blockly-gPIo".
 
-## Ziele der Änderungen
+## Änderungen
+
+Das Ziel dieser Arbeit war die Einbindung mehrere Sensoren, welche im naturwissenschaftlichen Schulunterricht zur Verwendung kommen sollen.
+
+Hierzu wurde das <a href="https://wiki.seeedstudio.com/Grove_System/">Grove System</a> der Firma *seeed studio* verwendet. Die eingebundenen Sensoren des *Grove Systems* können mittels des <a href="https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/">Grove Base Hat</a> an einen Raspberry Pi angeschlossen werden und umfassen die Sensoren:
+* <a href="https://wiki.seeedstudio.com/Grove-VOC_and_eCO2_Gas_Sensor-SGP30/">Grove - VOC and eCO2 Gas Sensor(SGP30)</a>
+  * (Python-Library) <a href="https://pypi.org/project/seeed-python-sgp30/">seeed-python-sgp30</a>
+  * (Python-Library) <a href="https://github.com/Seeed-Studio/grove.py">grove.py</a>
+
+* <a href="https://wiki.seeedstudio.com/Grove-CO2_Temperature_Humidity_Sensor-SCD30/">Grove - CO2 & Temperature & Humidity Sensor (SCD30)</a>
+  * (Python-Library) <a href="https://pypi.org/project/scd30-i2c/">scd30-i2c</a>
+
+* <a href="https://wiki.seeedstudio.com/Grove-Light_Sensor/">Grove - Light Sensor</a>
+  * (Python-Library) <a href="https://github.com/Seeed-Studio/grove.py">grove.py</a>
+
+
+Neben den Sensoren des *Grove Systems* wurde der Digital Output des Sensors <a href="https://www.waveshare.com/wiki/MQ-135_Gas_Sensor"> MQ-135</a> eingebunden.
+
+Um die Daten der Sensoren live in Graphen zu plotten wurde <a href="https://matplotlib.org/">Matplotlib</a> verwendet.
+
+(Hinweis: Alle Sensoren stehen nur in der deutschen Version zur Verfügung)
 
 
 
@@ -27,19 +47,19 @@ just improved his proof of concept to a slightly better working solution for our
  * python3
  * python3 librarys (websockets, gpiozero)
  * webserver, if run locally
- 
+
 ## Installation
 * Make sure that Raspbian 10 (Buster) has the all dependencies installed:  
 ```
   sudo apt-get install python3-dev python3-gpiozero python3-pip python3-websocket  
   sudo pip3 install websockets -t /usr/local/lib/python3.7/dist-packages
- ```
+```
 *  Download this repository and execute *run.py*:  
   ```
   git clone https://github.com/GrazerComputerClub/Blockly-gPIo.git  
   cd Blockly-gPIo  
   python3 run.py
-  ``` 
+  ```
 *  Optional: Install local webserver with blockly-gpio   
   ```
   apt-get install lighttpd
